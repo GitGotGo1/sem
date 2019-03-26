@@ -473,17 +473,17 @@ public class App {
     public void CapitalCityReport(String cityName) {
 
         try {
-            String query = "SELECT cities.name, cities.Population, country.Continent "+
+            String query = "SELECT cities.name, cities.Population, country.Name "+
                     "FROM country " +
                     "JOIN city as cities ON cities.ID = country.Capital " +
                     "WHERE cities.name LIKE '" + cityName + "'";
 
             ResultSet results = db.query(query);
             results.next();
-            System.out.println(String.format("%-10s %-15s %-20s", "Name", "Continent", "Population"));
+            System.out.println(String.format("%-10s %-15s %-20s", "Name", "Country Name", "Population"));
             String formatted_string =
                     String.format("%-10s %-15s %-20s",
-                            results.getString("Name"),results.getString("Continent"), results.getString("Population"));
+                            results.getString("Name"),results.getString("country.Name"), results.getString("Population"));
             System.out.println(formatted_string);
         }
         catch(Exception e){
