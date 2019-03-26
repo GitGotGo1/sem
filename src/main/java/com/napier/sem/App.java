@@ -72,32 +72,30 @@ public class App {
             System.out.println("36 Arabic.\n");
             System.out.println("37 Get Capital City.\n");
 
-            Scanner input = new Scanner(System.in);
-            int i = input.nextInt();
+        Scanner input = new Scanner(System.in);
+        int i = input.nextInt();
 
-            if (i == 1) {
-                System.out.println("All countries by population from largest to smallest:\n");
-                ArrayList<Country> worldCountries = this.worldCountriesByPopulationLS();
-                this.printCountries(worldCountries);
-            } else if (i == 2) {
-                System.out.println("Select a continent:");
-                String continent = input.next();
-                System.out.println("All the countries in a continent organised by largest population to smallest:\n");
-                ArrayList<Country> continentCountries = this.continentCountriesByPopulationLS(continent);
-                this.printCountries(continentCountries);
-            } else if (i == 3) {
-                System.out.println("Select a region:");
-                String region = input.next();
-                System.out.println("All the countries in a region organised by largest population to smallest.\n:\n");
-                ArrayList<Country> regionCountries = this.regionCountriesByPopulationLS(region);
-                this.printCountries(regionCountries);
-            } else if (i == 37) {
-                System.out.println("Enter a capital city name:");
-                String choice = input.next();
-                CapitalCityReport(choice);
+        if (i == 1) {
+            System.out.println("All countries by population from largest to smallest:\n");
+            this.printReportViews(this.worldCountriesByPopulationLS());
+        } else if (i == 2) {
+            System.out.println("Select a continent:");
+            String continent = input.next();
+            System.out.println("All the countries in a continent organised by largest population to smallest:\n");
+            ArrayList<Country> continentCountries = this.continentCountriesByPopulationLS(continent);
+            this.printCountries(continentCountries);
+        } else if (i == 3) {
+            System.out.println("Select a region:");
+            String region = input.next();
+            System.out.println("All the countries in a region organised by largest population to smallest.\n:\n");
+            ArrayList<Country> regionCountries = this.regionCountriesByPopulationLS(region);
+            this.printCountries(regionCountries);
+        } else if (i == 37) {
+            System.out.println("Enter a capital city name:");
+            String choice = input.next();
+            CapitalCityReport(choice);
 
-            }
-
+        }
     }
 
     /**
@@ -116,6 +114,26 @@ public class App {
                         String.format("%-10s %-15s %-20s",
                                 country.Name, country.Continent, country.Population);
                 System.out.println(formatted_string);
+            }
+        } else {
+            System.out.println("No countries");
+        }
+    }
+
+    /**
+     * Prints report view.
+     *
+     * @param views report views to print.
+     */
+    void printReportViews(ArrayList<ReportView> views) {
+        if (views != null) {
+            System.out.println(views.get(0).getHeader());
+            for (ReportView view : views) {
+                if (view == null) {
+                    continue;
+                }
+
+                System.out.println(view);
             }
         } else {
             System.out.println("No countries");
@@ -181,20 +199,19 @@ public class App {
      *
      * @return countries
      */
-    ArrayList<Country> worldCountriesByPopulationLS() {
+    ArrayList<ReportView> worldCountriesByPopulationLS() {
         try {
-            String query = "SELECT Name, Continent, Population FROM country";
+            String query =  "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, capitalCity.Name AS Capital FROM country c\n" +
+                            "JOIN city capitalCity ON capitalCity.ID = c.Capital\n" +
+                            "ORDER BY population DESC;";
 
             ResultSet results = db.query(query);
-            ArrayList<Country> countries = new ArrayList<>();
+            ArrayList<ReportView> views = new ArrayList<>();
             while (results.next()) {
-                Country country = new Country();
-                country.Continent = results.getString("Continent");
-                country.Name = results.getString("Name");
-                country.Population = results.getInt("Population");
-                countries.add(country);
+                CountryReportView view = new CountryReportView(results);
+                views.add(view);
             }
-            return countries;
+            return views;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to fetch country");
