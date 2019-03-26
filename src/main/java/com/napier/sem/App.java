@@ -33,64 +33,71 @@ public class App {
      * Select a report menu
      */
     private void menu() {
-        System.out.println("Select a function:");
-        System.out.println("1 All the countries in the world organised by largest population to smallest.\n");
-        System.out.println("2 All the countries in a continent organised by largest population to smallest.\n");
-        System.out.println("3 All the countries in a region organised by largest population to smallest.\n");
-        System.out.println("4 The top N populated countries in the world where N is provided by the user.\n");
-        System.out.println("5 The top N populated countries in a continent where N is provided by the user.\n");
-        System.out.println("6 The top N populated countries in a region where N is provided by the user.\n");
-        System.out.println("7 All the cities in the world organised by largest population to smallest.\n");
-        System.out.println("8 All the cities in a continent organised by largest population to smallest.\n");
-        System.out.println("9 All the cities in a region organised by largest population to smallest.\n");
-        System.out.println("10 All the cities in a country organised by largest population to smallest.\n");
-        System.out.println("11 All the cities in a district organised by largest population to smallest.\n");
-        System.out.println("12 The top N populated cities in the world where N is provided by the user.\n");
-        System.out.println("13 The top N populated cities in a continent where N is provided by the user.\n");
-        System.out.println("14 The top N populated cities in a region where N is provided by the user.\n");
-        System.out.println("15 The top N populated cities in a country where N is provided by the user.\n");
-        System.out.println("16 The top N populated cities in a district where N is provided by the user.\n");
-        System.out.println("17 All the capital cities in the world organised by largest population to smallest.\n");
-        System.out.println("18 All the capital cities in a continent organised by largest population to smallest.\n");
-        System.out.println("19 All the capital cities in a region organised by largest to smallest.\n");
-        System.out.println("20 The top N populated capital cities in the world where N is provided by the user.\n");
-        System.out.println("21 The top N populated capital cities in a continent where N is provided by the user.\n");
-        System.out.println("22 The top N populated capital cities in a region where N is provided by the user.\n");
-        System.out.println("23 The population of people, people living in cities, and people not living in cities in each continent.\n");
-        System.out.println("24 The population of people, people living in cities, and people not living in cities in each region.\n");
-        System.out.println("25 The population of people, people living in cities, and people not living in cities in each country.\n");
-        System.out.println("26 The population of the world.\n");
-        System.out.println("27 The population of a continent.\n");
-        System.out.println("28 The population of a region.\n");
-        System.out.println("29 The population of a country.\n");
-        System.out.println("30 The population of a district.\n");
-        System.out.println("31 The population of a city.\n");
-        System.out.println("32 Chinese.\n");
-        System.out.println("33 English.\n");
-        System.out.println("34 Hindi.\n");
-        System.out.println("35 Spanish.\n");
-        System.out.println("361 Arabic.\n");
+            System.out.println("Select a function:");
+            System.out.println("1 All the countries in the world organised by largest population to smallest.\n");
+            System.out.println("2 All the countries in a continent organised by largest population to smallest.\n");
+            System.out.println("3 All the countries in a region organised by largest population to smallest.\n");
+            System.out.println("4 The top N populated countries in the world where N is provided by the user.\n");
+            System.out.println("5 The top N populated countries in a continent where N is provided by the user.\n");
+            System.out.println("6 The top N populated countries in a region where N is provided by the user.\n");
+            System.out.println("7 All the cities in the world organised by largest population to smallest.\n");
+            System.out.println("8 All the cities in a continent organised by largest population to smallest.\n");
+            System.out.println("9 All the cities in a region organised by largest population to smallest.\n");
+            System.out.println("10 All the cities in a country organised by largest population to smallest.\n");
+            System.out.println("11 All the cities in a district organised by largest population to smallest.\n");
+            System.out.println("12 The top N populated cities in the world where N is provided by the user.\n");
+            System.out.println("13 The top N populated cities in a continent where N is provided by the user.\n");
+            System.out.println("14 The top N populated cities in a region where N is provided by the user.\n");
+            System.out.println("15 The top N populated cities in a country where N is provided by the user.\n");
+            System.out.println("16 The top N populated cities in a district where N is provided by the user.\n");
+            System.out.println("17 All the capital cities in the world organised by largest population to smallest.\n");
+            System.out.println("18 All the capital cities in a continent organised by largest population to smallest.\n");
+            System.out.println("19 All the capital cities in a region organised by largest to smallest.\n");
+            System.out.println("20 The top N populated capital cities in the world where N is provided by the user.\n");
+            System.out.println("21 The top N populated capital cities in a continent where N is provided by the user.\n");
+            System.out.println("22 The top N populated capital cities in a region where N is provided by the user.\n");
+            System.out.println("23 The population of people, people living in cities, and people not living in cities in each continent.\n");
+            System.out.println("24 The population of people, people living in cities, and people not living in cities in each region.\n");
+            System.out.println("25 The population of people, people living in cities, and people not living in cities in each country.\n");
+            System.out.println("26 The population of the world.\n");
+            System.out.println("27 The population of a continent.\n");
+            System.out.println("28 The population of a region.\n");
+            System.out.println("29 The population of a country.\n");
+            System.out.println("30 The population of a district.\n");
+            System.out.println("31 The population of a city.\n");
+            System.out.println("32 Chinese.\n");
+            System.out.println("33 English.\n");
+            System.out.println("34 Hindi.\n");
+            System.out.println("35 Spanish.\n");
+            System.out.println("36 Arabic.\n");
+            System.out.println("37 Get Capital City.\n");
 
-        Scanner input = new Scanner(System.in);
-        int i = input.nextInt();
+            Scanner input = new Scanner(System.in);
+            int i = input.nextInt();
 
-        if (i == 1) {
-            System.out.println("All countries by population from largest to smallest:\n");
-            ArrayList<Country> worldCountries = this.worldCountriesByPopulationLS();
-            this.printCountries(worldCountries);
-        } else if (i == 2) {
-            System.out.println("Select a continent:");
-            String continent = input.next();
-            System.out.println("All the countries in a continent organised by largest population to smallest:\n");
-            ArrayList<Country> continentCountries = this.continentCountriesByPopulationLS(continent);
-            this.printCountries(continentCountries);
-        } else if (i == 3) {
-            System.out.println("Select a region:");
-            String region = input.next();
-            System.out.println("All the countries in a region organised by largest population to smallest.\n:\n");
-            ArrayList<Country> regionCountries = this.regionCountriesByPopulationLS(region);
-            this.printCountries(regionCountries);
-        }
+            if (i == 1) {
+                System.out.println("All countries by population from largest to smallest:\n");
+                ArrayList<Country> worldCountries = this.worldCountriesByPopulationLS();
+                this.printCountries(worldCountries);
+            } else if (i == 2) {
+                System.out.println("Select a continent:");
+                String continent = input.next();
+                System.out.println("All the countries in a continent organised by largest population to smallest:\n");
+                ArrayList<Country> continentCountries = this.continentCountriesByPopulationLS(continent);
+                this.printCountries(continentCountries);
+            } else if (i == 3) {
+                System.out.println("Select a region:");
+                String region = input.next();
+                System.out.println("All the countries in a region organised by largest population to smallest.\n:\n");
+                ArrayList<Country> regionCountries = this.regionCountriesByPopulationLS(region);
+                this.printCountries(regionCountries);
+            } else if (i == 37) {
+                System.out.println("Enter a capital city name:");
+                String choice = input.next();
+                CapitalCityReport(choice);
+
+            }
+
     }
 
     /**
@@ -456,4 +463,33 @@ public class App {
     public ArrayList<City> countryPopulationCitiesandRural() {
         return null;
     }
+
+
+
+    /**
+     * Capital City report
+     * Prints the capital city details such as name, continent, and population.
+     */
+    public void CapitalCityReport(String cityName) {
+
+        try {
+            String query = "SELECT cities.name, cities.Population, country.Continent "+
+                    "FROM country " +
+                    "JOIN city as cities ON cities.ID = country.Capital " +
+                    "WHERE cities.name LIKE '" + cityName + "'";
+
+            ResultSet results = db.query(query);
+            results.next();
+            System.out.println(String.format("%-10s %-15s %-20s", "Name", "Continent", "Population"));
+            String formatted_string =
+                    String.format("%-10s %-15s %-20s",
+                            results.getString("Name"),results.getString("Continent"), results.getString("Population"));
+            System.out.println(formatted_string);
+        }
+        catch(Exception e){
+            System.out.println("No City Found");
+            System.out.println(e.getMessage());
+        }
+    }
+
 }
