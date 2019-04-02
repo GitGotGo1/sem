@@ -2,7 +2,7 @@ package com.napier.sem;
 
 /**
  * Generates queries for capital city reports
- * <p>
+ *
  * User inputs are represented by '?' - this will be replaced in prepared statements we'll send to the DB
  */
 class PopulationReportGenerator {
