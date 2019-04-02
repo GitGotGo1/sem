@@ -92,29 +92,61 @@ public class App {
                     // Do nothing
                     break;
 
-                case 1:
+                case 1: {
                     System.out.println("All countries by population from largest to smallest:\n");
                     printReportViews(worldCountriesByPopulationLS());
+                }
                     break;
 
-                case 2:
+                case 2: {
                     System.out.println("Select a continent:");
                     String continent = input.next();
                     System.out.println("All the countries in a continent organised by largest population to smallest:\n");
                     printReportViews(continentCountriesByPopulationLS(continent));
+                }
                     break;
 
-                case 3:
+                case 3: {
                     System.out.println("Select a region:");
                     String region = input.next();
                     System.out.println("All the countries in a region organised by largest population to smallest:\n");
                     printReportViews(regionCountriesByPopulationLS(region));
+                }
                     break;
 
-                case 37:
+                case 4: {
+                    System.out.println("Select number of countries to show:");
+                    int n = input.nextInt();
+                    System.out.println("Top populated countries in the world:\n");
+                    printReportViews(worldCountriesTopN(n));
+                }
+                    break;
+
+                case 5: {
+                    System.out.println("Select number of countries to show:");
+                    int n = input.nextInt();
+                    System.out.println("Select continent:");
+                    String continent = input.next();
+                    System.out.println("Top populated countries in a continent:\n");
+                    printReportViews(continentCountriesTopN(n, continent));
+                }
+                    break;
+
+                case 6: {
+                    System.out.println("Select number of countries to show:");
+                    int n = input.nextInt();
+                    System.out.println("Select region:");
+                    String region = input.next();
+                    System.out.println("Top populated countries in a region:\n");
+                    printReportViews(regionCountriesTopN(n, region));
+                }
+                    break;
+
+                case 37: {
                     System.out.println("Enter a capital city name:");
                     String choice = input.next();
                     printReportViews(CapitalCityReport(choice));
+                }
                     break;
 
                 default:
@@ -305,8 +337,25 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> worldCountriesTopN(int n) {
-        return null;
+    public ArrayList<ReportView> worldCountriesTopN(int n) {
+        try {
+            String query =  "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, capitalCity.Name AS Capital FROM country c\n" +
+                    "JOIN city capitalCity ON capitalCity.ID = c.Capital\n" +
+                    "ORDER BY population DESC\n" +
+                    "LIMIT " + n + ";";
+
+            ResultSet results = db.query(query);
+            ArrayList<ReportView> views = new ArrayList<>();
+            while (results.next()) {
+                CountryReportView view = new CountryReportView(results);
+                views.add(view);
+            }
+            return views;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to fetch country");
+            return null;
+        }
     }
 
     /**
@@ -314,8 +363,26 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> continentCountriesTopN(int n) {
-        return null;
+    public ArrayList<ReportView> continentCountriesTopN(int n, String continent) {
+        try {
+            String query =  "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, capitalCity.Name AS Capital FROM country c\n" +
+                    "JOIN city capitalCity ON capitalCity.ID = c.Capital\n" +
+                    "WHERE c.Continent = '" + continent + "'\n" +
+                    "ORDER BY population DESC\n" +
+                    "LIMIT " + n + ";";
+
+            ResultSet results = db.query(query);
+            ArrayList<ReportView> views = new ArrayList<>();
+            while (results.next()) {
+                CountryReportView view = new CountryReportView(results);
+                views.add(view);
+            }
+            return views;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to fetch country");
+            return null;
+        }
     }
 
     /**
@@ -323,8 +390,27 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> regionCountriesTopN(int n) {
-        return null;
+    public ArrayList<ReportView> regionCountriesTopN(int n, String region) {
+
+        try {
+            String query =  "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, capitalCity.Name AS Capital FROM country c\n" +
+                    "JOIN city capitalCity ON capitalCity.ID = c.Capital\n" +
+                    "WHERE c.Region = '" + region + "'\n" +
+                    "ORDER BY population DESC\n" +
+                    "LIMIT " + n + ";";
+
+            ResultSet results = db.query(query);
+            ArrayList<ReportView> views = new ArrayList<>();
+            while (results.next()) {
+                CountryReportView view = new CountryReportView(results);
+                views.add(view);
+            }
+            return views;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to fetch country");
+            return null;
+        }
     }
 
     /**
