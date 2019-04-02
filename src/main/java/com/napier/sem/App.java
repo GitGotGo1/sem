@@ -40,6 +40,7 @@ public class App {
      */
     private void menu() {
         System.out.println("Select a function:");
+        System.out.println("0 Exit the application.\n");
         System.out.println("1 All the countries in the world organised by largest population to smallest.\n");
         System.out.println("2 All the countries in a continent organised by largest population to smallest.\n");
         System.out.println("3 All the countries in a region organised by largest population to smallest.\n");
@@ -79,28 +80,57 @@ public class App {
         System.out.println("37 Get Capital City.\n");
 
         Scanner input = new Scanner(System.in);
-        int i = input.nextInt();
+        int i;
 
-        if (i == 1) {
-            System.out.println("All countries by population from largest to smallest:\n");
-            printReportViews(worldCountriesByPopulationLS());
-        } else if (i == 2) {
-            System.out.println("Select a continent:");
-            String continent = input.next();
-            System.out.println("All the countries in a continent organised by largest population to smallest:\n");
-            ArrayList<Country> continentCountries = continentCountriesByPopulationLS(continent);
-            this.printCountries(continentCountries);
-        } else if (i == 3) {
-            System.out.println("Select a region:");
-            String region = input.next();
-            System.out.println("All the countries in a region organised by largest population to smallest.\n:\n");
-            ArrayList<Country> regionCountries = regionCountriesByPopulationLS(region);
-            this.printCountries(regionCountries);
-        } else if (i == 37) {
-            System.out.println("Enter a capital city name:");
-            String choice = input.next();
-            printReportViews(CapitalCityReport(choice));
-        }
+        do {
+            try {
+                i = input.nextInt();
+            } catch (java.util.InputMismatchException e) {
+                // Clear input by taking line
+                input.next();
+
+                // Force default case
+                i = -1;
+            }
+
+            switch (i) {
+                case 0:
+                    // Do nothing
+                    break;
+
+                case 1:
+                    System.out.println("All countries by population from largest to smallest:\n");
+                    printReportViews(worldCountriesByPopulationLS());
+                    break;
+
+                case 2:
+                    System.out.println("Select a continent:");
+                    String continent = input.next();
+                    System.out.println("All the countries in a continent organised by largest population to smallest:\n");
+                    printReportViews(continentCountriesByPopulationLS(continent));
+                    break;
+
+                case 3:
+                    System.out.println("Select a region:");
+                    String region = input.next();
+                    System.out.println("All the countries in a region organised by largest population to smallest:\n");
+                    printReportViews(regionCountriesByPopulationLS(region));
+                    break;
+
+                case 37:
+                    System.out.println("Enter a capital city name:");
+                    String choice = input.next();
+                    printReportViews(CapitalCityReport(choice));
+                    break;
+
+                default:
+                    System.out.println("An invalid choice was selected. Please try again.");
+            }
+
+            System.out.println("\nChoose another function, or 0 to exit");
+        } while (i != 0);
+
+        System.out.println("Application has exited");
     }
 
     /**
@@ -130,8 +160,8 @@ public class App {
      *
      * @param views report views to print.
      */
-    private void printReportViews(ArrayList<ReportView> views) {
-        if (views != null) {
+    void printReportViews(ArrayList<ReportView> views) {
+        if (views != null && !views.isEmpty()) {
             System.out.println(views.get(0).getHeader());
             for (ReportView view : views) {
                 if (view == null) {
@@ -141,7 +171,7 @@ public class App {
                 System.out.println(view);
             }
         } else {
-            System.out.println("No countries");
+            System.out.println("No data returned");
         }
     }
 
@@ -235,27 +265,20 @@ public class App {
      * @param continent the continent
      * @return countries array list
      */
-    private ArrayList<Country> continentCountriesByPopulationLS(String continent) {
+    ArrayList<ReportView> continentCountriesByPopulationLS(String continent) {
         try {
-            String[] continents = new String[]{"Asia", "Europe", "North America", "Africa", "Oceania", "Antarctica", "South America"};
-            ArrayList<Country> countries = new ArrayList<>();
-            for (String cont : continents) {
-                String query =
-                        "SELECT Name, Continent, Population "
-                                + "FROM country "
-                                + "WHERE Continent = '" + continent + "' "
-                                + "ORDER BY Population DESC  ";
-                ResultSet results = db.query(query);
-                while (results.next()) {
-                    Country country = new Country();
-                    country.Code = results.getString("Code");
-                    country.Name = results.getString("Name");
-                    country.Continent = results.getString("Continent");
-                    country.Population = results.getInt("Population");
-                    countries.add(country);
-                }
+            String query =  "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, capitalCity.Name AS Capital FROM country c\n" +
+                    "JOIN city capitalCity ON capitalCity.ID = c.Capital\n" +
+                    "WHERE c.Continent = '" + continent + "' \n" +
+                    "ORDER BY population DESC;";
+
+            ResultSet results = db.query(query);
+            ArrayList<ReportView> views = new ArrayList<>();
+            while (results.next()) {
+                CountryReportView view = new CountryReportView(results);
+                views.add(view);
             }
-            return countries;
+            return views;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to fetch country");
@@ -269,25 +292,20 @@ public class App {
      * @param region the region
      * @return countries array list
      */
-    private ArrayList<Country> regionCountriesByPopulationLS(String region) {
+    ArrayList<ReportView> regionCountriesByPopulationLS(String region) {
         try {
-            ArrayList<Country> countries = new ArrayList<>();
-            String query =
-                    "SELECT Name, Continent, Population "
-                            + "FROM country "
-                            + "WHERE Region = '" + region + "' "
-                            + "ORDER BY Population DESC  ";
+            String query =  "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, capitalCity.Name AS Capital FROM country c\n" +
+                    "JOIN city capitalCity ON capitalCity.ID = c.Capital\n" +
+                    "WHERE c.Region = '" + region + "' \n" +
+                    "ORDER BY population DESC;";
+
             ResultSet results = db.query(query);
+            ArrayList<ReportView> views = new ArrayList<>();
             while (results.next()) {
-                Country country = new Country();
-                country.Code = results.getString("Code");
-                country.Name = results.getString("Name");
-                country.Continent = results.getString("Continent");
-                country.Region = results.getString("Region");
-                country.Population = results.getInt("Population");
-                countries.add(country);
+                CountryReportView view = new CountryReportView(results);
+                views.add(view);
             }
-            return countries;
+            return views;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to fetch country");
