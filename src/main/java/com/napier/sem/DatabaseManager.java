@@ -3,6 +3,9 @@ package com.napier.sem;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * The type Database manager.
+ */
 class DatabaseManager {
 
     /**
@@ -64,6 +67,7 @@ class DatabaseManager {
      * MySQL Query.
      *
      * @param query string
+     * @return the result set
      */
     ResultSet query(String query) {
         try {

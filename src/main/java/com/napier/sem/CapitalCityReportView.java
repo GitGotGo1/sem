@@ -21,6 +21,11 @@ public class CapitalCityReportView extends ReportView {
      */
     public int Population;
 
+    /**
+     * Instantiates a new Capital city report view.
+     *
+     * @param results the results
+     */
     public CapitalCityReportView(ResultSet results) {
         try {
             Name = results.getString("Name");

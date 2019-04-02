@@ -2,12 +2,14 @@ package com.napier.sem;
 
 /**
  * Generates queries for capital city reports
- *
+ * <p>
  * User inputs are represented by '?' - this will be replaced in prepared statements we'll send to the DB
  */
 public class PopulationReportGenerator {
     /**
      * Generates a SQL query to return the population details of a country
+     *
+     * @return the string
      */
     public String GenerateQuery_PopulationDifferencesCountry() {
         return
@@ -32,6 +34,8 @@ public class PopulationReportGenerator {
 
     /**
      * Generates a SQL query to return the population details of a region
+     *
+     * @return the string
      */
     public String GenerateQuery_PopulationDifferencesRegion() {
         return
@@ -56,6 +60,8 @@ public class PopulationReportGenerator {
 
     /**
      * Generates a SQL query to return the population details of a continent
+     *
+     * @return the string
      */
     public String GenerateQuery_PopulationDifferencesContinent() {
         return

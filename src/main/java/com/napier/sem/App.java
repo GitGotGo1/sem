@@ -4,7 +4,13 @@ import java.util.ArrayList;
 import java.sql.*;
 import java.util.Scanner;
 
+/**
+ * The type App.
+ */
 public class App {
+    /**
+     * The Db.
+     */
     static DatabaseManager db;
 
     /**
@@ -142,7 +148,7 @@ public class App {
     /**
      * The population of the world.
      *
-     * @return
+     * @return array list
      */
     public ArrayList<Country> worldPopulation() {
         return null;
@@ -151,7 +157,8 @@ public class App {
     /**
      * The population of a continent.
      *
-     * @return
+     * @param continent the continent
+     * @return array list
      */
     public ArrayList<Country> continentPopulation(String continent) {
         return null;
@@ -160,7 +167,8 @@ public class App {
     /**
      * The population of a region.
      *
-     * @return
+     * @param region the region
+     * @return array list
      */
     public ArrayList<Country> regionPopulation(String region) {
         return null;
@@ -169,7 +177,8 @@ public class App {
     /**
      * The population of a country.
      *
-     * @return
+     * @param country the country
+     * @return array list
      */
     public ArrayList<Country> countryPopulation(String country) {
         return null;
@@ -178,7 +187,8 @@ public class App {
     /**
      * The population of a district.
      *
-     * @return
+     * @param district the district
+     * @return array list
      */
     public ArrayList<Country> districtPopulation(String district) {
         return null;
@@ -187,7 +197,8 @@ public class App {
     /**
      * The population of a city.
      *
-     * @return
+     * @param city the city
+     * @return array list
      */
     public ArrayList<Country> cityPopulation(String city) {
         return null;
@@ -196,7 +207,7 @@ public class App {
     /**
      * All the countries in the world organised by largest population to smallest.
      *
-     * @return countries
+     * @return countries array list
      */
     ArrayList<ReportView> worldCountriesByPopulationLS() {
         try {
@@ -221,7 +232,8 @@ public class App {
     /**
      * All the countries in a continent organised by largest population to smallest.
      *
-     * @return countries
+     * @param continent the continent
+     * @return countries array list
      */
     ArrayList<Country> continentCountriesByPopulationLS(String continent) {
         try {
@@ -254,7 +266,8 @@ public class App {
     /**
      * All the countries in a region organised by largest population to smallest.
      *
-     * @return countries
+     * @param region the region
+     * @return countries array list
      */
     ArrayList<Country> regionCountriesByPopulationLS(String region) {
         try {
@@ -285,7 +298,8 @@ public class App {
     /**
      * The top N populated countries in the world where N is provided by the user.
      *
-     * @return
+     * @param n the n
+     * @return array list
      */
     public ArrayList<Country> worldCountriesTopN(int n) {
         return null;
@@ -294,7 +308,8 @@ public class App {
     /**
      * The top N populated countries in a continent where N is provided by the user.
      *
-     * @return
+     * @param n the n
+     * @return array list
      */
     public ArrayList<Country> continentCountriesTopN(int n) {
         return null;
@@ -303,7 +318,8 @@ public class App {
     /**
      * The top N populated countries in a region where N is provided by the user.
      *
-     * @return
+     * @param n the n
+     * @return array list
      */
     public ArrayList<Country> regionCountriesTopN(int n) {
         return null;
@@ -312,7 +328,7 @@ public class App {
     /**
      * All the cities in the world organised by largest population to smallest.
      *
-     * @return
+     * @return array list
      */
     public ArrayList<City> worldCitiesByPopulationLS() {
         return null;
@@ -321,7 +337,7 @@ public class App {
     /**
      * All the cities in a continent organised by largest population to smallest.
      *
-     * @return
+     * @return array list
      */
     public ArrayList<City> continentCitiesByPopulationLS() {
         return null;
@@ -330,7 +346,7 @@ public class App {
     /**
      * All the cities in a region organised by largest population to smallest.
      *
-     * @return
+     * @return array list
      */
     public ArrayList<City> regionCitiesByPopulationLS() {
         return null;
@@ -339,7 +355,7 @@ public class App {
     /**
      * All the cities in a country organised by largest population to smallest.
      *
-     * @return
+     * @return array list
      */
     public ArrayList<City> countryCitiesByPopulationLS() {
         return null;
@@ -348,7 +364,7 @@ public class App {
     /**
      * All the cities in a district organised by largest population to smallest.
      *
-     * @return
+     * @return array list
      */
     public ArrayList<City> districtCitiesByPopulationLS() {
         return null;
@@ -357,7 +373,8 @@ public class App {
     /**
      * The top N populated cities in the world where N is provided by the user.
      *
-     * @return
+     * @param n the n
+     * @return array list
      */
     public ArrayList<City> worldCitiesTopN(int n) {
         return null;
@@ -366,7 +383,8 @@ public class App {
     /**
      * The top N populated cities in a continent where N is provided by the user.
      *
-     * @return
+     * @param n the n
+     * @return array list
      */
     public ArrayList<City> continentCitiesTopN(int n) {
         return null;
@@ -375,7 +393,8 @@ public class App {
     /**
      * The top N populated cities in a region where N is provided by the user.
      *
-     * @return
+     * @param n the n
+     * @return array list
      */
     public ArrayList<City> regionCitiesTopN(int n) {
         return null;
@@ -384,7 +403,8 @@ public class App {
     /**
      * The top N populated cities in a country where N is provided by the user.
      *
-     * @return
+     * @param n the n
+     * @return array list
      */
     public ArrayList<City> countryCitiesTopN(int n) {
         return null;
@@ -393,7 +413,8 @@ public class App {
     /**
      * The top N populated cities in a district where N is provided by the user.
      *
-     * @return
+     * @param n the n
+     * @return array list
      */
     public ArrayList<City> districtCitiesTopN(int n) {
         return null;
@@ -402,7 +423,7 @@ public class App {
     /**
      * All the capital cities in the world organised by largest population to smallest.
      *
-     * @return
+     * @return array list
      */
     public ArrayList<City> worldCapitalsByPopulationLS() {
         return null;
@@ -411,7 +432,7 @@ public class App {
     /**
      * All the capital cities in a continent organised by largest population to smallest.
      *
-     * @return
+     * @return array list
      */
     public ArrayList<City> continentCapitalsByPopulationLS() {
         return null;
@@ -420,7 +441,7 @@ public class App {
     /**
      * All the capital cities in a region organised by largest to smallest.
      *
-     * @return
+     * @return array list
      */
     public ArrayList<City> regionCapitalsByPopulationLS() {
         return null;
@@ -429,7 +450,8 @@ public class App {
     /**
      * The top N populated capital cities in the world where N is provided by the user.
      *
-     * @return
+     * @param n the n
+     * @return array list
      */
     public ArrayList<City> worldCapitalsTopN(int n) {
         return null;
@@ -438,7 +460,8 @@ public class App {
     /**
      * The top N populated capital cities in a continent where N is provided by the user.
      *
-     * @return
+     * @param n the n
+     * @return array list
      */
     public ArrayList<City> continentCapitalsTopN(int n) {
         return null;
@@ -447,7 +470,8 @@ public class App {
     /**
      * The top N populated capital cities in a region where N is provided by the user.
      *
-     * @return
+     * @param n the n
+     * @return array list
      */
     public ArrayList<City> regionCapitalsTopN(int n) {
         return null;
@@ -456,7 +480,7 @@ public class App {
     /**
      * The population of people, people living in cities, and people not living in cities in each continent.
      *
-     * @return
+     * @return array list
      */
     public ArrayList<City> continentPopulationCitiesandRural() {
         return null;
@@ -465,7 +489,7 @@ public class App {
     /**
      * The population of people, people living in cities, and people not living in cities in each region.
      *
-     * @return
+     * @return array list
      */
     public ArrayList<City> regionPopulationCitiesandRural() {
         return null;
@@ -474,17 +498,19 @@ public class App {
     /**
      * The population of people, people living in cities, and people not living in cities in each country.
      *
-     * @return
+     * @return array list
      */
     public ArrayList<City> countryPopulationCitiesandRural() {
         return null;
     }
 
 
-
     /**
      * Capital City report
      * Prints the capital city details such as name, continent, and population.
+     *
+     * @param cityName the city name
+     * @return the array list
      */
     public ArrayList<ReportView> CapitalCityReport(String cityName) {
 

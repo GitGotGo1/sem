@@ -36,6 +36,11 @@ public class CountryReportView extends ReportView {
      */
     public String Capital;
 
+    /**
+     * Instantiates a new Country report view.
+     *
+     * @param results the results
+     */
     public CountryReportView(ResultSet results) {
         try {
             Code = results.getString("Code");
