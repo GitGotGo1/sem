@@ -1,7 +1,6 @@
 package com.napier.sem;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 /**
  * The type Database manager.
