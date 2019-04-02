@@ -9,17 +9,17 @@ public class CapitalCityReportView extends ReportView {
     /**
      * City Name
      */
-    public String Name;
+    private String Name;
 
     /**
      * Country Name
      */
-    public String Country;
+    private String Country;
 
     /**
      * City Population
      */
-    public int Population;
+    private int Population;
 
     /**
      * Instantiates a new Capital city report view.

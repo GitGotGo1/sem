@@ -10,11 +10,11 @@ class TestAppIntegration {
     /**
      * The App.
      */
-    static App app;
+    private static App app;
     /**
      * The Db.
      */
-    static DatabaseManager db;
+    private static DatabaseManager db;
 
     /**
      * Init.

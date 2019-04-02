@@ -3,7 +3,7 @@ package com.napier.sem;
 /**
  * Results shown in a city report
  */
-public class CityReportView {
+class CityReportView {
     /**
      * City Name
      */

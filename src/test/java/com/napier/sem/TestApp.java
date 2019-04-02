@@ -12,7 +12,7 @@ class TestApp {
     /**
      * The App.
      */
-    static App app;
+    private static App app;
 
     /**
      * Init.

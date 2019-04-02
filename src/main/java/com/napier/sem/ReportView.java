@@ -3,7 +3,7 @@ package com.napier.sem;
 /**
  * The type Report view.
  */
-public abstract class ReportView {
+abstract class ReportView {
     /**
      * Gets header.
      *

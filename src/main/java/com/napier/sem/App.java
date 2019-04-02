@@ -11,7 +11,7 @@ public class App {
     /**
      * The Db.
      */
-    static DatabaseManager db;
+    private static DatabaseManager db;
 
     /**
      * Connect to database and run report.
@@ -130,7 +130,7 @@ public class App {
      *
      * @param views report views to print.
      */
-    void printReportViews(ArrayList<ReportView> views) {
+    private void printReportViews(ArrayList<ReportView> views) {
         if (views != null) {
             System.out.println(views.get(0).getHeader());
             for (ReportView view : views) {
@@ -235,7 +235,7 @@ public class App {
      * @param continent the continent
      * @return countries array list
      */
-    ArrayList<Country> continentCountriesByPopulationLS(String continent) {
+    private ArrayList<Country> continentCountriesByPopulationLS(String continent) {
         try {
             String[] continents = new String[]{"Asia", "Europe", "North America", "Africa", "Oceania", "Antarctica", "South America"};
             ArrayList<Country> countries = new ArrayList<>();
@@ -269,7 +269,7 @@ public class App {
      * @param region the region
      * @return countries array list
      */
-    ArrayList<Country> regionCountriesByPopulationLS(String region) {
+    private ArrayList<Country> regionCountriesByPopulationLS(String region) {
         try {
             ArrayList<Country> countries = new ArrayList<>();
             String query =
@@ -512,7 +512,7 @@ public class App {
      * @param cityName the city name
      * @return the array list
      */
-    public ArrayList<ReportView> CapitalCityReport(String cityName) {
+    private ArrayList<ReportView> CapitalCityReport(String cityName) {
 
         try {
             String query = "SELECT cities.name as Name, cities.Population as Population, country.Name as Country\n" +

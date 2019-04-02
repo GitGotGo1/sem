@@ -5,7 +5,7 @@ package com.napier.sem;
  * <p>
  * User inputs are represented by '?' - this will be replaced in prepared statements we'll send to the DB
  */
-public class PopulationReportGenerator {
+class PopulationReportGenerator {
     /**
      * Generates a SQL query to return the population details of a country
      *

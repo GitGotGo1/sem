@@ -9,32 +9,32 @@ public class CountryReportView extends ReportView {
     /**
      * Country Code
      */
-    public String Code;
+    private String Code;
 
     /**
      * Country Name
      */
-    public String Name;
+    private String Name;
 
     /**
      * Country Continent
      */
-    public String Continent;
+    private String Continent;
 
     /**
      * Country Region
      */
-    public String Region;
+    private String Region;
 
     /**
      * Country Population
      */
-    public int Population;
+    private int Population;
 
     /**
      * Country Capital City Name
      */
-    public String Capital;
+    private String Capital;
 
     /**
      * Instantiates a new Country report view.
@@ -49,7 +49,6 @@ public class CountryReportView extends ReportView {
             Region = results.getString("Region");
             Population = results.getInt("Population");
             Capital = results.getString("Capital");
-            ;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to fetch country report view");

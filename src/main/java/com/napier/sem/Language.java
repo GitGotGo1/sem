@@ -3,7 +3,7 @@ package com.napier.sem;
 /**
  * Represents a country language
  */
-public class Language {
+class Language {
     /**
      * Language CountryCode
      */

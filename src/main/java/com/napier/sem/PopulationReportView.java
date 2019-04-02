@@ -3,7 +3,7 @@ package com.napier.sem;
 /**
  * Results shown in a population report
  */
-public class PopulationReportView {
+class PopulationReportView {
     /**
      * Name of the continent, region or country
      */

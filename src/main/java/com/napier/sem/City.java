@@ -3,7 +3,7 @@ package com.napier.sem;
 /**
  * Represents a city
  */
-public class City {
+class City {
     /**
      * City ID
      */
