@@ -1,0 +1,97 @@
+@startuml
+
+actor User as "User"
+
+rectangle Database
+
+rectangle "Population Info System" {
+    usecase UC1 as "Country Reports"
+
+        note top
+          * All in the world
+          * All in a continent
+          * All in a region
+        end note
+
+    usecase UC1_a as "organised by largest
+    population to smallest"
+    usecase UC1_b as "top N populated
+    (where N is given by user)"
+
+    User - UC1
+    UC1 - Database
+
+    UC1 ..> UC1_a
+    UC1 ..> UC1_b
+
+    usecase UC2 as "City Reports"
+
+        note top
+          * All in the world
+          * All in a continent
+          * All in a region
+          * All in a country
+          * All in a district
+        end note
+
+    usecase UC2_a as "organised by largest
+    population to smallest"
+    usecase UC2_b as "top N populated
+    (where N is given by user)"
+
+    User - UC2
+    UC2 - Database
+
+    UC2 ..> UC2_a
+    UC2 ..> UC2_b
+
+    usecase UC3 as "Capital City Reports"
+
+        note top
+          * All in the world
+          * All in a continent
+          * All in a region
+        end note
+
+    usecase UC3_a as "organised by largest
+    population to smallest"
+    usecase UC3_b as "top N populated
+    (where N is given by user)"
+
+    User - UC3
+    UC3 - Database
+
+    UC3 ..> UC3_a
+    UC3 ..> UC3_b
+
+    usecase UC4 as "Population Reports"
+
+        note top
+          * All in the world
+          * All in a continent
+          * All in a region
+        end note
+
+    usecase UC4_a as "total population of people"
+
+    User - UC4
+    UC4 - Database
+
+    UC4 ..> UC4_a
+
+    usecase UC5 as "Language Reports"
+
+        note top
+          * All in the world
+        end note
+
+    usecase UC5_a as "organized by largest
+    amount of speakers to smallest"
+
+    User - UC5
+    UC5 - Database
+
+    UC5 ..> UC5_a
+}
+
+@enduml

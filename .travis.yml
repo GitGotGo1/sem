@@ -1,18 +1,83 @@
 language: java
 
-sudo: required
+sudo: false
 
-dist: trusty
+addons:
+  hosts:
+  - db
+
+env:
+  global:
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 
 services:
-  - mysql
-  - docker
+- docker
+
+install:
+- docker build -t database db/.
+- docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
+- mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 before_script:
-  # Set up MySQL
-  - mysql -e "CREATE DATABASE world CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;"
-  - mysql -u root -e "CREATE USER 'world'@'localhost' IDENTIFIED BY 'world';"
-  - mysql -u root -e "GRANT ALL PRIVILEGES ON world.* TO 'world'@'localhost';"
+- mvn clean
+
+jobs:
+  include:
+  - stage: unit tests
+    install: skip
+    jdk: oraclejdk11
+    script: mvn test -Dtest=com.napier.sem.TestApp
+  - stage: integration tests
+    jdk: oraclejdk11
+    script: mvn test -Dtest=com.napier.sem.TestAppIntegration
+  - stage: GitHub Release
+    install: skip
+    jdk: oraclejdk11
+    script:
+    - echo "Deploying to GitHub Releases"
+    - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
+    before_deploy:
+    - git config --local user.name "Dillon-Brown"
+    - git config --local user.email "dillon.brown@salesagility.com"
+    - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y-%m-%d')-$(git log --format=%h -1)}
+    - git tag $TRAVIS_TAG
+    deploy:
+      provider: releases
+      api_key: "$GITHUB_OAUTH_TOKEN"
+      file: "$TRAVIS_BUILD_DIR/target/seMethods.jar"
+      skip_cleanup: true
+  - stage: Google Cloud Deploy
+    install: skip
+    jdk: oraclejdk11
+    before_script:
+      - if [ ! -d ${HOME}/google-cloud-sdk ]; then curl https://sdk.cloud.google.com | bash
+        > /dev/null; fi
+      - source $HOME/google-cloud-sdk/path.bash.inc
+      - gcloud components install kubectl
+      - gcloud version
+      - gcloud auth activate-service-account --key-file client-secret.json
+    script:
+      - gcloud config set project semethods-237111
+      - gcloud config set compute/zone europe-west2-b
+      - export PROJECT_ID="$(gcloud config get-value project -q)"
+      - gcloud auth configure-docker
+      - docker build -t gcr.io/${PROJECT_ID}/db db/.
+      - docker push gcr.io/${PROJECT_ID}/db
+      - gcloud container clusters create hr-cluster --num-nodes=1
+      - kubectl run hr --image=gcr.io/${PROJECT_ID}/db --port 3306
+      - kubectl expose deployment hr --port=3306 --target-port=3306 --type=LoadBalancer
+stages:
+  - unit tests
+  - integration tests
+  - name: GitHub Release
+    if: branch = master
+  - name: Google Cloud Deploy
+    if: branch = master
 
 after_success:
-  - docker-compose up -d
+- bash <(curl -s https://codecov.io/bash)
+
+before_install:
+  # Decrypts credentials.
+- openssl aes-256-cbc -K $encrypted_504b3d8af6c7_key -iv $encrypted_504b3d8af6c7_iv
+  -in client-secret.json.enc -out client-secret.json -d
