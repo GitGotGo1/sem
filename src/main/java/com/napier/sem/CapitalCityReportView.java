@@ -19,13 +19,13 @@ public class CapitalCityReportView extends ReportView {
     /**
      * City Population
      */
-    public long Population;
+    public int Population;
 
     public CapitalCityReportView(ResultSet results) {
         try {
             Name = results.getString("Name");
             Country = results.getString("Country");
-            Population = results.getLong("Population");
+            Population = results.getInt("Population");
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to fetch country report view");

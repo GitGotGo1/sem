@@ -9,11 +9,11 @@ public class PopulationReportGenerator {
     /**
      * Generates a SQL query to return the population details of a country
      */
-    public static String GenerateQuery_PopulationDifferencesCountry(String country) {
+    public String GenerateQuery_PopulationDifferencesCountry() {
         return
             "SELECT \n" +
             "    country.Name \n" +
-            "        AS '" + PopulationReportScale.Country.name() + "', \n" +
+            "        AS 'Country', \n" +
             "    country.Population\n" +
             "        AS 'Total Population', \n" +
             "    SUM(city.Population) \n" +
@@ -26,18 +26,18 @@ public class PopulationReportGenerator {
             "        AS 'Population Not Living in Cities (%)'\n" +
             "FROM country\n" +
             "JOIN city ON city.CountryCode = country.Code\n" +
-            "WHERE country.name LIKE '" + country + "'\n" +
+            "WHERE country.name LIKE ? -- where clause taken from user input\n" +
             "GROUP BY country.Name, country.Population";
     }
 
     /**
      * Generates a SQL query to return the population details of a region
      */
-    public static String GenerateQuery_PopulationDifferencesRegion(String region) {
+    public String GenerateQuery_PopulationDifferencesRegion() {
         return
             "SELECT \n" +
             "    country.Region\n" +
-            "        AS '" + PopulationReportScale.Region.name() + "', \n" +
+            "        AS 'Region', \n" +
             "    SUM(country.Population)\n" +
             "        AS 'Total Population', \n" +
             "    SUM(city.Population) \n" +
@@ -51,17 +51,17 @@ public class PopulationReportGenerator {
             "FROM country\n" +
             "JOIN city ON city.CountryCode = country.Code\n" +
             "GROUP BY country.Region\n" +
-            "HAVING country.Region LIKE '" + region + "'";
+            "HAVING country.Region LIKE ? -- having clause taken from user input";
     }
 
     /**
      * Generates a SQL query to return the population details of a continent
      */
-    public static String GenerateQuery_PopulationDifferencesContinent(String continent) {
+    public String GenerateQuery_PopulationDifferencesContinent() {
         return
             "SELECT \n" +
             "    country.Continent\n" +
-            "        AS '" + PopulationReportScale.Continent.name() + "', \n" +
+            "        AS 'Continent', \n" +
             "    SUM(country.Population)\n" +
             "        AS 'Total Population', \n" +
             "    SUM(city.Population) \n" +
@@ -75,6 +75,6 @@ public class PopulationReportGenerator {
             "FROM country\n" +
             "JOIN city ON city.CountryCode = country.Code\n" +
             "GROUP BY country.Continent\n" +
-            "HAVING country.Continent LIKE '" + continent + "'";
+            "HAVING country.Continent LIKE ? -- having clause taken from user input";
     }
 }
