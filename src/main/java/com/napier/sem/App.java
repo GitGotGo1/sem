@@ -234,7 +234,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> worldPopulation() {
+    public ArrayList<ReportView> worldPopulation() {
         return null;
     }
 
@@ -243,7 +243,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> continentPopulation(String continent) {
+    public ArrayList<ReportView> continentPopulation(String continent) {
         return null;
     }
 
@@ -252,7 +252,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> regionPopulation(String region) {
+    public ArrayList<ReportView> regionPopulation(String region) {
         return null;
     }
 
@@ -261,7 +261,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> countryPopulation(String country) {
+    public ArrayList<ReportView> countryPopulation(String country) {
         return null;
     }
 
@@ -270,7 +270,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> districtPopulation(String district) {
+    public ArrayList<ReportView> districtPopulation(String district) {
         return null;
     }
 
@@ -279,7 +279,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> cityPopulation(String city) {
+    public ArrayList<ReportView> cityPopulation(String city) {
         return null;
     }
 
