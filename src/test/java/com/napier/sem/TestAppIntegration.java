@@ -9,13 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TestAppIntegration {
     static App app;
-    static DatabaseManager db;
+    DBManager db;
 
     @BeforeAll
     static void init() {
         app = new App();
-        db = new DatabaseManager();
-        db.connect("localhost:33060");
+        DBManager db = DBManagerFactory.getInstance("mysql");
     }
 
     @Test
