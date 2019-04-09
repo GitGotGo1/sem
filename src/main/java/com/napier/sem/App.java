@@ -243,7 +243,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> worldPopulation() {
+    public ArrayList<ReportView> worldPopulation() {
         return null;
     }
 
@@ -252,7 +252,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> continentPopulation(String continent) {
+    public ArrayList<ReportView> continentPopulation(String continent) {
         return null;
     }
 
@@ -261,7 +261,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> regionPopulation(String region) {
+    public ArrayList<ReportView> regionPopulation(String region) {
         return null;
     }
 
@@ -270,7 +270,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> countryPopulation(String country) {
+    public ArrayList<ReportView> countryPopulation(String country) {
         return null;
     }
 
@@ -279,7 +279,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> districtPopulation(String district) {
+    public ArrayList<ReportView> districtPopulation(String district) {
         return null;
     }
 
@@ -288,7 +288,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> cityPopulation(String city) {
+    public ArrayList<ReportView> cityPopulation(String city) {
         return null;
     }
 
@@ -455,7 +455,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> worldCitiesByPopulationLS() {
+    public ArrayList<ReportView> worldCitiesByPopulationLS() {
         return null;
     }
 
@@ -464,7 +464,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> continentCitiesByPopulationLS() {
+    public ArrayList<ReportView> continentCitiesByPopulationLS() {
         return null;
     }
 
@@ -473,7 +473,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> regionCitiesByPopulationLS() {
+    public ArrayList<ReportView> regionCitiesByPopulationLS() {
         return null;
     }
 
@@ -482,7 +482,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> countryCitiesByPopulationLS() {
+    public ArrayList<ReportView> countryCitiesByPopulationLS() {
         return null;
     }
 
@@ -491,7 +491,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> districtCitiesByPopulationLS() {
+    public ArrayList<ReportView> districtCitiesByPopulationLS() {
         return null;
     }
 
@@ -500,7 +500,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> worldCitiesTopN(int n) {
+    public ArrayList<ReportView> worldCitiesTopN(int n) {
         return null;
     }
 
@@ -509,7 +509,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> continentCitiesTopN(int n) {
+    public ArrayList<ReportView> continentCitiesTopN(int n) {
         return null;
     }
 
@@ -518,7 +518,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> regionCitiesTopN(int n) {
+    public ArrayList<ReportView> regionCitiesTopN(int n) {
         return null;
     }
 
@@ -527,7 +527,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> countryCitiesTopN(int n) {
+    public ArrayList<ReportView> countryCitiesTopN(int n) {
         return null;
     }
 
@@ -536,7 +536,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> districtCitiesTopN(int n) {
+    public ArrayList<ReportView> districtCitiesTopN(int n) {
         return null;
     }
 
@@ -545,7 +545,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> worldCapitalsByPopulationLS() {
+    public ArrayList<ReportView> worldCapitalsByPopulationLS() {
         return null;
     }
 
@@ -554,7 +554,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> continentCapitalsByPopulationLS() {
+    public ArrayList<ReportView> continentCapitalsByPopulationLS() {
         return null;
     }
 
@@ -563,7 +563,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> regionCapitalsByPopulationLS() {
+    public ArrayList<ReportView> regionCapitalsByPopulationLS() {
         return null;
     }
 
@@ -572,7 +572,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> worldCapitalsTopN(int n) {
+    public ArrayList<ReportView> worldCapitalsTopN(int n) {
         return null;
     }
 
@@ -581,7 +581,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> continentCapitalsTopN(int n) {
+    public ArrayList<ReportView> continentCapitalsTopN(int n) {
         return null;
     }
 
@@ -590,7 +590,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> regionCapitalsTopN(int n) {
+    public ArrayList<ReportView> regionCapitalsTopN(int n) {
         return null;
     }
 
@@ -599,7 +599,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> continentPopulationCitiesandRural() {
+    public ArrayList<ReportView> continentPopulationCitiesandRural() {
         return null;
     }
 
@@ -608,7 +608,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> regionPopulationCitiesandRural() {
+    public ArrayList<ReportView> regionPopulationCitiesandRural() {
         return null;
     }
 
@@ -617,7 +617,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> countryPopulationCitiesandRural() {
+    public ArrayList<ReportView> countryPopulationCitiesandRural() {
         return null;
     }
 
