@@ -6,36 +6,37 @@ import java.sql.ResultSet;
 /**
  * Base database implementation.
  */
-abstract class DBManager {
-
-    /**
-     * Connection to database.
-     */
-    public Connection database = null;
-
+interface DBManager {
     /**
      * Create a DB.
      *
      * @param dbName String
      */
-    public abstract void create(String dbName);
+    void create(String dbName);
 
     /**
      * Drop a DB.
      *
      * @param dbName String
      */
-    public abstract void drop(String dbName);
+    void drop(String dbName);
 
     /**
      * Connect to the DB.
      */
-    public abstract void connect();
+    void connect();
 
     /**
      * Disconnect from the DB connection.
      */
-    public abstract void disconnect();
+    void disconnect();
+
+    /**
+     * Returns the DB connection object if it exists, otherwise restarts the connection.
+     *
+     * @return Connection
+     */
+    Connection getConnection();
 
     /**
      * Runs DB query.
@@ -43,24 +44,5 @@ abstract class DBManager {
      * @param sql String
      * @return ResultSet
      */
-    public abstract ResultSet query(String sql);
-
-    /**
-     * Returns the current database.
-     *
-     * @return Connection
-     */
-    public Connection getDatabase() {
-        checkConnection();
-        return database;
-    }
-
-    /**
-     * Checks the DB connection, if not found then reconnect.
-     */
-    public void checkConnection() {
-        if (database == null) {
-            connect();
-        }
-    }
+    ResultSet query(String sql);
 }

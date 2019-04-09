@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class App {
-    static DatabaseManager db;
+    DBManager db;
 
     /**
      * Connect to database and run report.
@@ -13,15 +13,9 @@ public class App {
      * @param args string
      */
     public static void main(String[] args) {
-        db = new DatabaseManager();
+        DBManager db = DBManagerFactory.getInstance("mysql");
         App a = new App();
 
-        // Connect to DB
-        if (args.length < 1) {
-            db.connect("localhost:33060");
-        } else {
-            db.connect(args[0]);
-        }
         // Main report
         a.menu();
 

@@ -4,16 +4,22 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Connection;
 
 /**
  * MySQL implementation.
  */
-public final class MysqlManager extends DBManager {
+public final class MysqlManager implements DBManager {
+
+    /**
+     * Connection to database.
+     */
+    private Connection database = null;
 
     /**
      * How many attempts to make during DB connection.
      */
-    public static final int CONNECTION_RETRIES = 10;
+    private static final int CONNECTION_RETRIES = 10;
 
     /**
      * {@inheritDoc}
@@ -85,8 +91,22 @@ public final class MysqlManager extends DBManager {
      * {@inheritDoc}
      */
     @Override
+    public Connection getConnection() {
+        if (database != null) {
+            return database;
+        } else {
+            connect();
+            return database;
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public ResultSet query(String sql) {
         try {
+            getConnection();
             Statement stmt = database.createStatement();
             return stmt.executeQuery(sql);
         } catch (Exception e) {
