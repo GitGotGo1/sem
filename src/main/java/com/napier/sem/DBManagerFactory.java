@@ -6,10 +6,9 @@ package com.napier.sem;
 class DBManagerFactory {
 
     /**
-     * Private constructor for utility class.
+     * Private constructor.
      */
     private DBManagerFactory() {
-        throw new IllegalStateException("Utility class");
     }
 
     /**
@@ -18,7 +17,7 @@ class DBManagerFactory {
      * @param dbType String
      * @return DBManager
      */
-    public static DBManager getInstance(final String dbType) {
+    static DBManager getInstance(final String dbType) {
         switch (dbType) {
             case "mysql":
                 return new MysqlManager();
