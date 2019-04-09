@@ -28,7 +28,7 @@ public class CapitalCityReportView extends ReportView {
             Population = results.getLong("Population");
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to fetch country report view");
+            System.out.println("Failed to fetch capital city report view");
         }
     }
 
