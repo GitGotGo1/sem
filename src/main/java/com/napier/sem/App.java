@@ -1,7 +1,7 @@
 package com.napier.sem;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.sql.*;
 import java.util.Scanner;
 
 public class App {
