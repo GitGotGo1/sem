@@ -76,6 +76,7 @@ public class App {
             System.out.println("39 Get all capital cities in the world\n");
             System.out.println("40 Get all capital cities in a given continent\n");
             System.out.println("41 Get a limited number of capital cities in a provided continent\n");
+            System.out.println("42 Get a limited number of capital cities in a provided region \n");
 
         Scanner input = new Scanner(System.in);
         int i;
@@ -146,6 +147,27 @@ public class App {
                 }
                     break;
 
+                case 23: {
+                    System.out.println("Enter a continent:");
+                    String choice = input.next();
+                    printReportViews(continentPopulationCitiesAndRural(choice));
+                }
+                    break;
+
+                case 24: {
+                    System.out.println("Enter a region:");
+                    String choice = input.next();
+                    printReportViews(regionPopulationCitiesAndRural(choice));
+                }
+                    break;
+
+                case 25: {
+                    System.out.println("Enter a country:");
+                    String choice = input.next();
+                    printReportViews(countryPopulationCitiesAndRural(choice));
+                }
+                    break;
+
                 case 37: {
                     System.out.println("Enter a capital city name:");
                     String choice = input.next();
@@ -175,6 +197,14 @@ public class App {
                     System.out.println("provide the top number of capital cities you wish to view:");
                     Integer limit = Integer.parseInt(input.next());
                     printReportViews(CapitalCityContinentLimited(choice2, limit));
+                    break;
+
+                case 42:
+                    System.out.println("Enter a region you wish to view:");
+                    String region = input.next();
+                    System.out.println("Provide the top number of capital cities you wish to view:");
+                    Integer limit2 = Integer.parseInt(input.next());
+                    printReportViews(CapitalCityRegionLimited(region, limit2));
                     break;
 
                 default:
@@ -234,7 +264,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> worldPopulation() {
+    public ArrayList<ReportView> worldPopulation() {
         return null;
     }
 
@@ -243,7 +273,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> continentPopulation(String continent) {
+    public ArrayList<ReportView> continentPopulation(String continent) {
         return null;
     }
 
@@ -252,7 +282,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> regionPopulation(String region) {
+    public ArrayList<ReportView> regionPopulation(String region) {
         return null;
     }
 
@@ -261,7 +291,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> countryPopulation(String country) {
+    public ArrayList<ReportView> countryPopulation(String country) {
         return null;
     }
 
@@ -270,7 +300,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> districtPopulation(String district) {
+    public ArrayList<ReportView> districtPopulation(String district) {
         return null;
     }
 
@@ -279,7 +309,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<Country> cityPopulation(String city) {
+    public ArrayList<ReportView> cityPopulation(String city) {
         return null;
     }
 
@@ -446,7 +476,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> worldCitiesByPopulationLS() {
+    public ArrayList<ReportView> worldCitiesByPopulationLS() {
         return null;
     }
 
@@ -455,7 +485,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> continentCitiesByPopulationLS() {
+    public ArrayList<ReportView> continentCitiesByPopulationLS() {
         return null;
     }
 
@@ -464,7 +494,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> regionCitiesByPopulationLS() {
+    public ArrayList<ReportView> regionCitiesByPopulationLS() {
         return null;
     }
 
@@ -473,7 +503,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> countryCitiesByPopulationLS() {
+    public ArrayList<ReportView> countryCitiesByPopulationLS() {
         return null;
     }
 
@@ -482,7 +512,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> districtCitiesByPopulationLS() {
+    public ArrayList<ReportView> districtCitiesByPopulationLS() {
         return null;
     }
 
@@ -491,7 +521,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> worldCitiesTopN(int n) {
+    public ArrayList<ReportView> worldCitiesTopN(int n) {
         return null;
     }
 
@@ -500,7 +530,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> continentCitiesTopN(int n) {
+    public ArrayList<ReportView> continentCitiesTopN(int n) {
         return null;
     }
 
@@ -509,7 +539,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> regionCitiesTopN(int n) {
+    public ArrayList<ReportView> regionCitiesTopN(int n) {
         return null;
     }
 
@@ -518,7 +548,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> countryCitiesTopN(int n) {
+    public ArrayList<ReportView> countryCitiesTopN(int n) {
         return null;
     }
 
@@ -527,7 +557,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> districtCitiesTopN(int n) {
+    public ArrayList<ReportView> districtCitiesTopN(int n) {
         return null;
     }
 
@@ -536,7 +566,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> worldCapitalsByPopulationLS() {
+    public ArrayList<ReportView> worldCapitalsByPopulationLS() {
         return null;
     }
 
@@ -545,7 +575,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> continentCapitalsByPopulationLS() {
+    public ArrayList<ReportView> continentCapitalsByPopulationLS() {
         return null;
     }
 
@@ -554,7 +584,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> regionCapitalsByPopulationLS() {
+    public ArrayList<ReportView> regionCapitalsByPopulationLS() {
         return null;
     }
 
@@ -563,7 +593,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> worldCapitalsTopN(int n) {
+    public ArrayList<ReportView> worldCapitalsTopN(int n) {
         return null;
     }
 
@@ -572,7 +602,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> continentCapitalsTopN(int n) {
+    public ArrayList<ReportView> continentCapitalsTopN(int n) {
         return null;
     }
 
@@ -581,7 +611,7 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> regionCapitalsTopN(int n) {
+    public ArrayList<ReportView> regionCapitalsTopN(int n) {
         return null;
     }
 
@@ -590,8 +620,22 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> continentPopulationCitiesandRural() {
-        return null;
+    public ArrayList<ReportView> continentPopulationCitiesAndRural(String continent) {
+        try {
+            String query = PopulationReportGenerator.GenerateQuery_PopulationDifferencesContinent(continent);
+
+            ResultSet results = db.query(query);
+            ArrayList<ReportView> views = new ArrayList<>();
+            while (results.next()) {
+                PopulationReportView view = new PopulationReportView(results, PopulationReportScale.Continent);
+                views.add(view);
+            }
+            return views;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
     /**
@@ -599,8 +643,22 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> regionPopulationCitiesandRural() {
-        return null;
+    public ArrayList<ReportView> regionPopulationCitiesAndRural(String region) {
+        try {
+            String query = PopulationReportGenerator.GenerateQuery_PopulationDifferencesRegion(region);
+
+            ResultSet results = db.query(query);
+            ArrayList<ReportView> views = new ArrayList<>();
+            while (results.next()) {
+                PopulationReportView view = new PopulationReportView(results, PopulationReportScale.Region);
+                views.add(view);
+            }
+            return views;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
     /**
@@ -608,8 +666,22 @@ public class App {
      *
      * @return
      */
-    public ArrayList<City> countryPopulationCitiesandRural() {
-        return null;
+    public ArrayList<ReportView> countryPopulationCitiesAndRural(String country) {
+        try {
+            String query = PopulationReportGenerator.GenerateQuery_PopulationDifferencesCountry(country);
+
+            ResultSet results = db.query(query);
+            ArrayList<ReportView> views = new ArrayList<>();
+            while (results.next()) {
+                PopulationReportView view = new PopulationReportView(results, PopulationReportScale.Country);
+                views.add(view);
+            }
+            return views;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
 
@@ -619,7 +691,6 @@ public class App {
      * Prints the capital city details such as name, continent, and population.
      */
     public ArrayList<ReportView> CapitalCityReport(String cityName) {
-
         try {
             String query = "SELECT cities.name as Name, cities.Population as Population, country.Name as Country\n"+
                     "FROM country \n" +
@@ -742,6 +813,38 @@ public class App {
                 views.add(view);
             }
             System.out.println("You are searching for the top " + limit + " Capital cities in the continent " + cont);
+            return views;
+        }
+        catch(Exception e){
+            System.out.println("No data Found");
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+
+
+
+    public ArrayList<ReportView> CapitalCityRegionLimited(String region, Integer limit) {
+        try {
+            String query = "SELECT "+
+                    "t1.region AS 'Region', "+
+                    "t1.name AS 'Country', "+
+                    "t2.name, "+
+                    "t2.population AS 'Population' "+
+                    "FROM (select country.Name, country.Region, country.capital FROM country) as t1, (select city.name, city.population, city.ID FROM city) as t2 "+
+                    "where t1.capital = t2.id AND t1.region =  '"+ region + "' "+
+                    "order by t2.population DESC "+
+                    "LIMIT " + limit + " ;";
+
+            ResultSet results = db.query(query);
+
+            ArrayList<ReportView> views = new ArrayList<>();
+            while (results.next()) {
+                CapitalCityReportView view = new CapitalCityReportView(results);
+                views.add(view);
+            }
+            System.out.println("You are searching for the top " + limit + " Capital cities in the region " + region);
             return views;
         }
         catch(Exception e){
